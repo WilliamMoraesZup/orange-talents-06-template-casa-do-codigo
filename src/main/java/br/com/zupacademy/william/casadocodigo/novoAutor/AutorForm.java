@@ -26,7 +26,11 @@ public class AutorForm {
     @Size(max = 400)
     private String descricao;
 
-    public AutorForm() {
+    public AutorForm(   @NotNull
+                        @NotBlank String nome, String email, String descricao) {
+        this.nome = nome;
+        this.email = email;
+        this.descricao = descricao;
     }
 
     @Override
@@ -40,8 +44,8 @@ public class AutorForm {
     }
 
     public Autor converter(AutorRepository repository) {
-        List<Autor> byEmail = repository.findByEmail(email);
-        Assert.isTrue(byEmail.size()==0, "Email já se encontra cadastrado");
+    /*    List<Autor> byEmail = repository.findByEmail(email);
+        Assert.isTrue(byEmail.size()==0, "Email já se encontra cadastrado");*/
         return new Autor(nome, email, descricao);
     }
 

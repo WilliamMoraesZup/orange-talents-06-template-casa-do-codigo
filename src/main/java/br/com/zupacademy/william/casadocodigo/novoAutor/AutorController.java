@@ -3,25 +3,31 @@ package br.com.zupacademy.william.casadocodigo.novoAutor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/aluno")
 public class AutorController {
 
-@Autowired
-private AutorRepository repository;
+    @Autowired
+    private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+
+    @InitBinder
+    public void init(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(proibeEmailDuplicadoAutorValidator);
+
+    }
+
+
+    @Autowired
+    private AutorRepository repository;
 
 
     @PostMapping
-    public ResponseEntity<?> novoAutor(@RequestBody @Valid AutorForm form)  {
+    public ResponseEntity<?> novoAutor(@RequestBody @Valid AutorForm form) {
 
 
         Autor autor = form.converter(repository);
