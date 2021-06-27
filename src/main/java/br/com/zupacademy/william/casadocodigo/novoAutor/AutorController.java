@@ -15,22 +15,16 @@ public class AutorController {
     @Autowired
     private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 
-    @InitBinder
+ /*   @InitBinder
     public void init(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(proibeEmailDuplicadoAutorValidator);
-
-    }
-
-
+    }*/
     @Autowired
     private AutorRepository repository;
 
-
     @PostMapping
     public ResponseEntity<?> novoAutor(@RequestBody @Valid AutorForm form) {
-
-
-        Autor autor = form.converter(repository);
+        Autor autor = form.converter( );
         repository.save(autor);
 
         return ResponseEntity.ok(autor);

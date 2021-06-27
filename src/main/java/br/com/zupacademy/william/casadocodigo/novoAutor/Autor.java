@@ -15,11 +15,11 @@ public class Autor {
 
     @NotNull
     @NotBlank
+
     private String nome;
     @NotNull
     @NotBlank
-    @Email
-    @Column(unique = true)
+    @Email  //@DeveSerUnico
     private String email;
     @NotNull
     @NotBlank
@@ -30,6 +30,7 @@ public class Autor {
     @Deprecated
     public Autor() {
     }
+
 
     public Autor(@NotNull @NotBlank String nome,
                  @NotNull @NotBlank String email,

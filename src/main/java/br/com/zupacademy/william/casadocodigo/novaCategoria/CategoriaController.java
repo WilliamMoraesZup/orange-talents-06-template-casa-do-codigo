@@ -18,10 +18,10 @@ public class CategoriaController {
     @Autowired
     private ProibeNomeDuplicadoCategoriaValidator proibeNomeDuplicadoCategoriaValidator;
 
-    @InitBinder
+ /*   @InitBinder
     public void init(WebDataBinder binder) {
         binder.addValidators(proibeNomeDuplicadoCategoriaValidator);
-    }
+    }*/
 
     @PostMapping
     public ResponseEntity<?> novaCategoria(@RequestBody @Valid NovaCategoriaForm form) {

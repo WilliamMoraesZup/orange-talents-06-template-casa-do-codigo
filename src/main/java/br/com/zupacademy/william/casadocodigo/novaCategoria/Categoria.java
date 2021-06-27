@@ -13,13 +13,15 @@ public class Categoria {
     private Long id;
 
     @NotNull
-    @NotBlank @Column(unique = true)
+    @NotBlank
+   // @Column(unique = true)
     private String nome;
 
-    public Categoria(@javax.validation.constraints.NotNull @NotBlank String nome  ) {
+    public Categoria(@NotNull @NotBlank String nome) {
         this.nome = nome;
     }
-@Deprecated
+
+    @Deprecated
     public Categoria() {
     }
 
@@ -31,7 +33,5 @@ public class Categoria {
                 '}';
     }
 
-    public String getNome() {
-        return nome;
-    }
+
 }
