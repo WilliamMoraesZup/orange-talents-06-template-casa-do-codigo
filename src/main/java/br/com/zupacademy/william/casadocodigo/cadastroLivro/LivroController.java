@@ -7,35 +7,47 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/livro")
 public class LivroController {
 
-    @Autowired
-    private LivroRepository repository;
 
     @PersistenceContext
     private EntityManager manager;
 
     @PostMapping
     public ResponseEntity<?> novoLivro(@RequestBody @Valid LivroForm form) {
-      Livro livro = form.converter(manager);
-        repository.save(livro);
-        return ResponseEntity.ok(livro) ;
+        Livro livro = form.converter(manager);
+        manager.persist(livro);
+        return ResponseEntity.ok(livro);
     }
 
     @GetMapping
-    public ResponseEntity<?> buscaLivro(){
+    public ResponseEntity<?> buscaLivro() {
+        Query query = manager.createQuery("from Livro");
+        List<Livro> resultList = query.getResultList();
+        List<LivroListaResponse> listaResponses = resultList.stream().map(LivroListaResponse::new).collect(Collectors.toList());
 
-        List<LivroResponse> livroResponses = repository.findAll()
-                .stream().map(LivroResponse::new)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(livroResponses);
+        return ResponseEntity.ok(listaResponses);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscaDetalhesLivro(@PathVariable Long id) {
+        Livro livro  = manager.find(Livro.class, id);
+
+
+        if (livro!=null) {
+            LivroDetalhesSiteResponse livroProSite = new LivroDetalhesSiteResponse(livro);
+            return ResponseEntity.ok(livroProSite);
+
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

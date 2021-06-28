@@ -1,13 +1,13 @@
 package br.com.zupacademy.william.casadocodigo.cadastroLivro;
 
 
-public class LivroResponse {
+public class LivroListaResponse {
 
     private Long id;
 
     private String titulo;
 
-    public LivroResponse(Livro livro) {
+    public LivroListaResponse(Livro livro) {
         this.id =  livro.getId();
         this.titulo = livro.getTitulo();
     }
