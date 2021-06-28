@@ -1,9 +1,14 @@
-package br.com.zupacademy.william.casadocodigo.novoAutor;
+package br.com.zupacademy.william.casadocodigo.cadastroAutor;
 
 
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 
 @Entity
@@ -19,7 +24,7 @@ public class Autor {
     private String nome;
     @NotNull
     @NotBlank
-    @Email  //@DeveSerUnico
+    @Email
     private String email;
     @NotNull
     @NotBlank

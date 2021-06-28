@@ -1,4 +1,4 @@
-package br.com.zupacademy.william.casadocodigo.novaCategoria;
+package br.com.zupacademy.william.casadocodigo.cadastroCategoria;
 
 import com.sun.istack.NotNull;
 
@@ -14,7 +14,6 @@ public class Categoria {
 
     @NotNull
     @NotBlank
-   // @Column(unique = true)
     private String nome;
 
     public Categoria(@NotNull @NotBlank String nome) {

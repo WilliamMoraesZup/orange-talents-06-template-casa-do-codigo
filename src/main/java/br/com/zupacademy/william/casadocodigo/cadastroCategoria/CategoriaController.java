@@ -1,9 +1,8 @@
-package br.com.zupacademy.william.casadocodigo.novaCategoria;
+package br.com.zupacademy.william.casadocodigo.cadastroCategoria;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,16 +11,8 @@ import javax.validation.Valid;
 @RequestMapping("/categoria")
 public class CategoriaController {
 
-
     @Autowired
     private CategoriaRepository repository;
-    @Autowired
-    private ProibeNomeDuplicadoCategoriaValidator proibeNomeDuplicadoCategoriaValidator;
-
- /*   @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(proibeNomeDuplicadoCategoriaValidator);
-    }*/
 
     @PostMapping
     public ResponseEntity<?> novaCategoria(@RequestBody @Valid NovaCategoriaForm form) {

@@ -1,24 +1,17 @@
-package br.com.zupacademy.william.casadocodigo.novoAutor;
+package br.com.zupacademy.william.casadocodigo.cadastroAutor;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/aluno")
+@RequestMapping("/autor")
 public class AutorController {
 
-    @Autowired
-    private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 
- /*   @InitBinder
-    public void init(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(proibeEmailDuplicadoAutorValidator);
-    }*/
     @Autowired
     private AutorRepository repository;
 

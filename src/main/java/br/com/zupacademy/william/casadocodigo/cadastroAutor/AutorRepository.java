@@ -1,4 +1,4 @@
-package br.com.zupacademy.william.casadocodigo.novoAutor;
+package br.com.zupacademy.william.casadocodigo.cadastroAutor;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

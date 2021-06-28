@@ -1,4 +1,4 @@
-package br.com.zupacademy.william.casadocodigo.novaCategoria;
+package br.com.zupacademy.william.casadocodigo.cadastroCategoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package br.com.zupacademy.william.casadocodigo.novoAutor;
+package br.com.zupacademy.william.casadocodigo.cadastroAutor;
 
 import br.com.zupacademy.william.casadocodigo.shared.DeveSerUnico;
 import com.sun.istack.NotNull;

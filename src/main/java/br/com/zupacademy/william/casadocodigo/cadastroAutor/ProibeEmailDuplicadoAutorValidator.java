@@ -1,4 +1,4 @@
-package br.com.zupacademy.william.casadocodigo.novaCategoria;
+package br.com.zupacademy.william.casadocodigo.cadastroAutor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,14 +8,14 @@ import org.springframework.validation.Validator;
 import java.util.List;
 
 @Component
-public class ProibeNomeDuplicadoCategoriaValidator implements Validator {
+public class ProibeEmailDuplicadoAutorValidator implements Validator {
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private AutorRepository autorRepository;
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return NovaCategoriaForm.class.isAssignableFrom(clazz);
+        return AutorForm.class.isAssignableFrom(clazz);
     }
 
     @Override
@@ -24,11 +24,11 @@ public class ProibeNomeDuplicadoCategoriaValidator implements Validator {
             return;
         }
 
-        NovaCategoriaForm request = (NovaCategoriaForm) target;
-        List<Categoria> categoriaList = categoriaRepository.findByNome(request.getNome());
+        AutorForm request = (AutorForm) target;
+        List<Autor> categoriaList = autorRepository.findByEmail(request.getEmail());
 
         if(categoriaList.size()>0){
-            errors.rejectValue("Nome", null, "Já existe essa categoria cadastrada "+request.getNome());
+            errors.rejectValue("Email", null, "Já existe essa email cadastrado "+request.getEmail());
         }
     }
 }
