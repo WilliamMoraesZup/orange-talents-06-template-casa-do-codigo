@@ -1,11 +1,12 @@
 package br.com.zupacademy.william.casadocodigo.cadastroLivro;
 
 
-import br.com.zupacademy.william.casadocodigo.cadastroCategoria.Categoria;
 import br.com.zupacademy.william.casadocodigo.cadastroAutor.Autor;
+import br.com.zupacademy.william.casadocodigo.cadastroCategoria.Categoria;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,13 +23,13 @@ public class Livro {
     @NotNull  @NotBlank private String sumario;
     @NotNull  @Min (20) private BigDecimal preco;
     @NotNull  @Positive @Min( 100) private int numeroPaginas;
-    @NotNull  @NotBlank  String isbn;
-    private @NotNull @Future Date dataDuplicacao;
+    @NotNull  @NotBlank private String isbn;
+    @NotNull @Future private Date dataDuplicacao;
 
-    @ManyToOne
+    @ManyToOne @NotNull @Valid
     private Categoria categoria;
 
-    @ManyToOne
+    @ManyToOne  @NotNull @Valid
     private Autor autor;
 
     public Livro() {
@@ -44,5 +45,13 @@ public class Livro {
         this.dataDuplicacao = dataDuplicacao;
         this.categoria = categoria;
         this.autor = autor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 }
