@@ -26,7 +26,7 @@ public class PaisEstadoController {
         manager.persist(pais);
 
 
-        return ResponseEntity.ok(pais);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/estado")
@@ -35,6 +35,6 @@ public class PaisEstadoController {
         Estado estado = form.converter(manager);
         manager.persist(estado);
 
-        return ResponseEntity.ok(estado);
+        return ResponseEntity.ok().build();
     }
 }

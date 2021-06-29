@@ -26,7 +26,7 @@ public class LivroController {
     public ResponseEntity<?> novoLivro(@RequestBody @Valid LivroForm form) {
         Livro livro = form.converter(manager);
         manager.persist(livro);
-        return ResponseEntity.ok(livro);
+        return ResponseEntity.ok( ).build();
     }
 
     @GetMapping

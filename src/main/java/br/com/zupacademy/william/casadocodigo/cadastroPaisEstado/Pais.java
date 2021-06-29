@@ -26,5 +26,11 @@ public class Pais {
         this.nome = nome;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }

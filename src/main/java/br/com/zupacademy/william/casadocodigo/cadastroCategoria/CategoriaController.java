@@ -21,6 +21,6 @@ public class CategoriaController {
         Categoria categoria = form.converter();
         repository.save(categoria);
 
-        return ResponseEntity.ok(categoria);
+        return ResponseEntity.ok( ).build();
     }
 }

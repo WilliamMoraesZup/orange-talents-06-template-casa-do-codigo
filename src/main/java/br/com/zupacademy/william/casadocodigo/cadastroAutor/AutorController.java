@@ -21,7 +21,7 @@ public class AutorController {
         Autor autor = form.converter( );
         repository.save(autor);
 
-        return ResponseEntity.ok(autor);
+        return ResponseEntity.ok().build();
 
     }
 

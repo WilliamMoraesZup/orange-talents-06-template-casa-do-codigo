@@ -31,4 +31,13 @@ public class Estado {
         this.nome = nome;
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        return "Estado{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", pais=" + pais +
+                '}';
+    }
 }
