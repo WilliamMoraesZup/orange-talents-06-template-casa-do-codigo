@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class LivroController {
     @PersistenceContext
     private EntityManager manager;
 
-    @PostMapping
+    @PostMapping  @Transactional
     public ResponseEntity<?> novoLivro(@RequestBody @Valid LivroForm form) {
         Livro livro = form.converter(manager);
         manager.persist(livro);

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
@@ -15,7 +16,7 @@ public class AutorController {
     @Autowired
     private AutorRepository repository;
 
-    @PostMapping
+    @PostMapping  @Transactional
     public ResponseEntity<?> novoAutor(@RequestBody @Valid AutorForm form) {
         Autor autor = form.converter( );
         repository.save(autor);

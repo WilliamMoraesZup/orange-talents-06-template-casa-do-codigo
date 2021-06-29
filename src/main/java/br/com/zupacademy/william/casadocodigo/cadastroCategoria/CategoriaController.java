@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
@@ -14,7 +15,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaRepository repository;
 
-    @PostMapping
+    @PostMapping  @Transactional
     public ResponseEntity<?> novaCategoria(@RequestBody @Valid NovaCategoriaForm form) {
 
         Categoria categoria = form.converter();

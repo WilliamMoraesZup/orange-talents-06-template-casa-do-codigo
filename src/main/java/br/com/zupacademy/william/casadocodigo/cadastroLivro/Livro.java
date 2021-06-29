@@ -31,7 +31,7 @@ public class Livro {
 
     @ManyToOne  @NotNull @Valid
     private Autor autor;
-
+    @Deprecated
     public Livro() {
     }
 

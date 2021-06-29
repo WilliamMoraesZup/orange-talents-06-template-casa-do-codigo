@@ -50,7 +50,7 @@ public class LivroForm {
     private Long idAutor;
 
     public Livro converter(EntityManager manager) {
-        System.out.println("CONVERTER");
+
 
         Categoria categoria = manager.find(Categoria.class, idCategoria);
         Autor autor = manager.find(Autor.class, idAutor);
